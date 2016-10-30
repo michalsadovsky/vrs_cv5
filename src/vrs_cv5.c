@@ -60,7 +60,6 @@ void USART2_IRQHandler(void)         //USART1 INTERAPTION CALLBACK primanie reag
 	if(USART2->SR & USART_SR_RXNE)
 	{
 		recivedValue=USART_ReceiveData(USART2);
-
 		if(recivedValue=='m')
 		{
 			if(format==0)
@@ -109,16 +108,16 @@ void ADC1_IRQHandler (void)      //ADC1   //INTERAPTION CALLBACK   ULOHA2 citani
   if(ADC1->SR & ADC_SR_EOC)
 {
    AD_value =ADC1->DR;
-  //ADC_ClearFlag(ADC1,ADC_FLAG_EOC);
+  DC_ClearFlag(ADC1,ADC_FLAG_EOC);
   // USART_SendData(USART2,4);
 }
 
-/*
+
   if(ADC1->SR & ADC_SR_OVR)
   {
      ADC_ClearFlag(ADC1,ADC_FLAG_OVR);
   }
-  */
+  
 }
 
 
