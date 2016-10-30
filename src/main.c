@@ -48,23 +48,32 @@ SOFTWARE.
 **===========================================================================
 */
 int main(void)
-{ int i = 0;
-uint16_t AD_value=1000;
+{
+int i = 0;
+
 int eoc,ovr;
 
-  adc_init();
-  gpio_init();
+  adc_init1();  // Inicializacia ADC
+  usart_init1();   //Inicializacia USART
+  ADC_SoftwareStartConv(ADC1);   //Zaciaktok konverzie
+           format=0;
+           AD_value=ADC_GetConversionValue(ADC1); // nacitanie hodnoty z ADC
+           USART_SendData(USART2,(uint16_t) AD_value);  // odosleme prvy krat hodnotu
 
 
 
-	   GPIO_SetBits(GPIOA, GPIO_Pin_5);
+
+
 
 /* Infinite loop */
 while (1){
+	/*if (i==0){
+	USART_SendData(USART2,(uint16_t) '\n');  // posiela znak noveho riadku
+	}*/
 
-	eoc=ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC);
-	ovr=ADC_GetFlagStatus(ADC1, ADC_FLAG_OVR);
+    {
 
+    }
 
 
 }
